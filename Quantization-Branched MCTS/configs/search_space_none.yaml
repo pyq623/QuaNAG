@@ -1,0 +1,17 @@
+search_space:
+  stages: [1, 2, 3, 4]
+  conv_types: ["DWSepConv", "MBConv", "DpConv", "SeSepConv", "SeDpConv"]
+  kernel_sizes: [3, 5, 7]
+  strides: [1, 2, 4]
+  skip_connection: [True, False]
+  activations: ["ReLU6", "LeakyReLU", "Swish"]
+  expansions: [1, 2, 3, 4]
+  channels: [6, 12, 18, 24]
+  has_se: [True, False]
+  se_ratios: [0, 0.25, 0.5]
+  blocks_per_stage: [1, 2]
+  quantization_modes: ["none"] 
+  
+constraints:
+  max_peak_memory: 5 # 单位为 MB
+  max_latency: 5000  # 单位为毫秒

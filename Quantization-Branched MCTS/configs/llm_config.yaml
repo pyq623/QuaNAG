@@ -1,0 +1,12 @@
+# LLM configuration for QB-MCTS.
+# Replace the placeholders below with your own endpoint and credential.
+llm:
+  model_name: "deepseek-coder"
+  temperature: 0.3
+  base_url: "YOUR_API_BASE_URL"
+  api_key: "YOUR_API_KEY"
+  timeout: 30
+  max_retries: 2
+
+memory:
+  max_history: 5

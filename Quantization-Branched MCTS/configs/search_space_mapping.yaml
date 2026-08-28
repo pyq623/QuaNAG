@@ -1,0 +1,150 @@
+# /root/unified_nas/configs/mapping.yaml
+# mapping.yaml 不需要加stages 和  blocks_per_stage，因为这些是结构信息，不是搜索空间参数
+# NCode Mapping for Unified NAS Search Space
+# Format: QUANT|STAGE1|STAGE2|STAGE3|...
+# Each stage: BLOCK1-BLOCK2-...-CHANNELS
+# Each block: 8-digit code [type, kernel, stride, expansion, has_se, se_ratio, skip, activation]
+# 1|11010001-0|11021201-41010120-0|42121120-1
+mapping:
+  # Convolution operation types
+  conv_types:
+    "DWSepConv": 0
+    "MBConv": 1
+    "DpConv": 2
+    "SeSepConv": 3
+    "SeDpConv": 4
+  
+  # Kernel sizes
+  kernel_sizes:
+    3: 0
+    5: 1
+    7: 2
+  
+  # Stride values
+  strides:
+    1: 0
+    2: 1
+    4: 2
+  
+  # Skip connection
+  skip_connection:
+    false: 0
+    true: 1
+  
+  # Activation functions
+  activations:
+    "ReLU6": 0
+    "LeakyReLU": 1
+    "Swish": 2
+  
+  # Expansion ratios
+  expansions:
+    1: 0
+    2: 1
+    3: 2
+    4: 3
+  
+  # Channel numbers
+  channels:
+    6: 0
+    12: 1
+    18: 2
+    24: 3
+    "input": 4  # Special: keep input channels from dataset
+  
+  # Squeeze-and-Excitation
+  has_se:
+    false: 0
+    true: 1
+  
+  # SE reduction ratios
+  se_ratios:
+    0: 0
+    0.25: 1
+    0.5: 2
+  
+  # Quantization modes
+  quantization_modes:
+    "none": 0
+    "static": 1
+    "qat": 2
+    "qaft": 3
+
+# Reverse mapping
+reverse_mapping:
+  conv_types:
+    0: "DWSepConv"
+    1: "MBConv"
+    2: "DpConv"
+    3: "SeSepConv"
+    4: "SeDpConv"
+  
+  kernel_sizes:
+    0: 3
+    1: 5
+    2: 7
+  
+  strides:
+    0: 1
+    1: 2
+    2: 4
+  
+  skip_connection:
+    0: false
+    1: true
+  
+  activations:
+    0: "ReLU6"
+    1: "LeakyReLU"
+    2: "Swish"
+  
+  expansions:
+    0: 1
+    1: 2
+    2: 3
+    3: 4
+  
+  channels:
+    0: 6
+    1: 12
+    2: 18
+    3: 24
+    4: "input"  # Will be resolved at decode time
+  
+  has_se:
+    0: false
+    1: true
+  
+  se_ratios:
+    0: 0
+    1: 0.25
+    2: 0.5
+  
+  quantization_modes:
+    0: "none"
+    1: "static"
+    2: "qat"
+    3: "qaft"
+
+# NCode structure
+ncode_structure:
+  separators:
+    stage: "|"
+    block: "-"
+  
+  block_length: 8
+  
+  block_positions:
+    conv_type: 0
+    kernel_size: 1
+    stride: 2
+    expansion: 3
+    has_se: 4
+    se_ratio: 5
+    skip_connection: 6
+    activation: 7
+
+# Memory rules
+memory_rules:
+  quarter_memory_modes: ["static", "qat", "qaft"]
+  memory_divisor: 4

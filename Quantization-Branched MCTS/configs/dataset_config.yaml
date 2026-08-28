@@ -1,0 +1,44 @@
+# LM-Searcher 数据集生成配置
+
+# 生成参数
+generation:
+  n_subspaces: 8000              # 子空间数量
+  n_samples_per_subspace: 150    # 每个子空间采样数
+  history_ratio: 0.8             # History占比
+  prune_prob: 0.5                # 剪枝概率
+  
+  # 并行处理
+  num_workers: 8
+  batch_size: 16                 # 批量评估
+
+# 内存约束
+memory_constraints:
+  default_limit: 50.0            # MB
+  limits_to_test: [30, 50, 70, 100]  # 测试多个约束
+
+# 任务配置
+tasks:
+  har:
+    enabled: true
+    datasets: ['MMAct', 'USCHAD', 'Mhealth']
+    quick_train_epochs: 2
+    eval_batch_size: 64
+    
+  image:
+    enabled: true
+    datasets: ['cifar10', 'cifar100', 'mnist']
+    quick_train_epochs: 2
+    eval_batch_size: 128
+
+# 质量控制
+quality_control:
+  min_performance_range: 2.0     # 最小性能范围(%)
+  max_performance_range: 15.0    # 最大性能范围(%)
+  min_valid_candidates: 10       # 最少有效候选数
+  
+# 输出配置
+output:
+  save_format: 'json'            # json or jsonl
+  compress: true                 # 是否压缩
+  save_statistics: true
+  save_visualizations: true

@@ -1,0 +1,32 @@
+# Model files
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.ckpt
+optimizer.pt
+rng_state_*.pth
+scaler.pt
+scheduler.pt
+checkpoint-*/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Training outputs
+*.log
+*.jsonl
+running_log.txt
+trainer_log.jsonl
+
+# Generated images and plots
+*.png
+
+# Local credentials and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
