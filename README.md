@@ -14,19 +14,21 @@ The complete algorithmic implementation of our approach is contained within the 
 
 The `QuaNAG` directory contains the implementation for Progressive Dataset construction, with the primary codebase concentrated in the `data_constrution` folder.
 
-## Fine-tuned Model Adapters
+## Model Training Configurations and Tokenizers
 
-The fine-tuned QuaNAG adapter files are located in the following directory:
-```
+Training configurations, tokenizer files, and training and evaluation
+records for QuaNAG are provided in the following directory:
+
 LLaMA-Factory/saves/Llama-3.1-8B/lora
-```
 
-### Benchmark-Specific Adapters
+Each benchmark-specific directory includes LoRA adapter configurations,
+training hyperparameters, tokenizer files, and training and evaluation
+results.
 
-The correspondence between adapter checkpoints and their respective benchmarks is as follows:
+### Benchmark-Specific Directories
 
-| Adapter Checkpoint | Benchmark |
-|-------------------|-----------|
+| Directory | Benchmark |
+|-----------|-----------|
 | `train_2026-01-03-15-22-33` | Mhealth |
 | `train_2026-01-07-12-41-41` | MMAct |
 | `train_2026-01-13-02-17-52` | Wharf |
