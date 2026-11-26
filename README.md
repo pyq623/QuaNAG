@@ -2,7 +2,7 @@
 
 ## Overview
 
-QuaNAG primarily consists of two core components: **Quantization-Branched MCTS** and **Constraint-to-Quality Curriculum**. 
+QuaNAG primarily consists of two core components: **Quantization-Branched MCTS** and **Constraint-to-Quality Curriculum**.
 
 ## Repository Structure
 
@@ -16,14 +16,13 @@ The `QuaNAG` directory contains the implementation for Progressive Dataset const
 
 ## Model Training Configurations and Tokenizers
 
-Training configurations, tokenizer files, and training and evaluation
-records for QuaNAG are provided in the following directory:
+Training configurations and tokenizer files for QuaNAG are provided in the following directory:
 
 LLaMA-Factory/saves/Llama-3.1-8B/lora
 
-Each benchmark-specific directory includes LoRA adapter configurations,
-training hyperparameters, tokenizer files, and training and evaluation
-results.
+Each benchmark-specific directory includes LoRA adapter configurations, training hyperparameters, and tokenizer files.
+
+For Mhealth, the trained LoRA adapter is also available on [ModelScope](https://modelscope.cn/models/PuppeyYard/Llama-3.1-QuaNAG-Mhealth-LoRA), together with training configurations, tokenizer files, and loading instructions. The adapter is used with the `meta-llama/Llama-3.1-8B` base model.
 
 ### Benchmark-Specific Directories
 
